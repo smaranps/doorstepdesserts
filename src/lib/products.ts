@@ -34,5 +34,19 @@ export const products: Dessert[] = [
         description: 'Two scoops of vanilla ice cream with hot fudge, whipped cream, and a cherry.',
         price: 8.50,
         imageId: 'ice-cream-sundae'
+    },
+    {
+        id: 'classic-cheesecake',
+        name: 'Classic Cheesecake Slice',
+        description: 'A single slice of rich and creamy New York-style cheesecake with a graham cracker crust.',
+        price: 7.50,
+        imageId: 'classic-cheesecake'
+    },
+    {
+        id: 'lemon-meringue-pie',
+        name: 'Lemon Meringue Pie Slice',
+        description: 'A slice of tangy lemon filling topped with fluffy toasted meringue.',
+        price: 7.00,
+        imageId: 'lemon-meringue-pie'
     }
 ];
