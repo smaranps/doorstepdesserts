@@ -3,9 +3,9 @@ import type { Dessert } from '@/lib/types';
 export const products: Dessert[] = [
     {
         id: 'gooey-brownies',
-        name: 'Gooey Fudge Brownies (6)',
+        name: 'Gooey Fudge Brownies (4)',
         description: 'A half-dozen rich, fudgy brownies with a crinkly top.',
-        price: 16.00,
+        price: 12.00,
         imageId: 'gooey-brownies'
     },
     {
@@ -17,9 +17,9 @@ export const products: Dessert[] = [
     },
     {
         id: 'assorted-cupcakes',
-        name: 'Assorted Cupcakes (6)',
-        description: 'Six classic cupcakes with rich cream cheese frosting.',
-        price: 18.00,
+        name: 'Assorted Cupcakes (4)',
+        description: 'Four classic cupcakes with rich cream cheese frosting.',
+        price: 12.00,
         imageId: 'red-velvet-cupcakes',
         variants: [
             { id: 'chocolate-chip', name: 'Chocolate Chip' },
