@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
-import { CartProvider } from "@/hooks/use-cart";
-import { Toaster } from "@/components/ui/toaster";
+import { Header } from "@/components/header";
 
 export const metadata: Metadata = {
   title: "Doorstep Desserts",
-  description: "Delicious desserts delivered to your doorstep.",
+  description: "Simple dessert catalog for a school project.",
 };
 
 export default function RootLayout({
@@ -26,14 +23,10 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased">
-        <CartProvider>
-          <div className="flex flex-col min-h-dvh">
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-          <Toaster />
-        </CartProvider>
+        <div className="flex flex-col min-h-dvh">
+          <Header />
+          <main className="flex-1">{children}</main>
+        </div>
       </body>
     </html>
   );

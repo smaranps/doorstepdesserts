@@ -1,5 +1,16 @@
-import { ProductCard } from "@/components/product-card";
-import { products } from "@/lib/products";
+import Image from 'next/image';
+import Link from 'next/link';
+import { products } from '@/lib/products';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 
 export default function Home() {
   return (
@@ -19,9 +30,46 @@ export default function Home() {
             Our Menu
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+            {products.map((product) => {
+              const image = PlaceHolderImages.find(
+                (img) => img.id === product.imageId
+              );
+              return (
+                <Card
+                  key={product.id}
+                  className="flex flex-col overflow-hidden"
+                >
+                  <CardHeader className="p-0">
+                    {image && (
+                      <div className="aspect-[3/2] w-full relative">
+                        <Image
+                          src={image.imageUrl}
+                          alt={product.name}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          data-ai-hint={image.imageHint}
+                        />
+                      </div>
+                    )}
+                  </CardHeader>
+                  <CardContent className="p-4 flex-grow">
+                    <CardTitle className="text-xl font-headline mb-1">
+                      {product.name}
+                    </CardTitle>
+                    <CardDescription>{product.description}</CardDescription>
+                  </CardContent>
+                  <CardFooter className="p-4 flex justify-between items-center">
+                    <p className="text-lg font-bold text-primary">
+                      ${product.price.toFixed(2)}
+                    </p>
+                    <Button asChild>
+                      <Link href="/checkout">Buy Now</Link>
+                    </Button>
+                  </CardFooter>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
