@@ -9,6 +9,7 @@
  */
 
 import { ai } from '@/ai/genkit';
+import { googleAI } from '@genkit-ai/google-genai';
 import { z } from 'genkit';
 
 const CakeDesignerInputSchema = z.object({
@@ -42,6 +43,7 @@ const prompt = ai.definePrompt({
   name: 'cakeDesignerPrompt',
   input: { schema: CakeDesignerInputSchema },
   output: { schema: CakeDesignerOutputSchema },
+  model: googleAI.model('gemini-1.5-flash'),
   prompt: `
     You are an expert cake designer for a shop called "Doorstep Desserts".
     Your task is to design a unique cake based on a user's event description.

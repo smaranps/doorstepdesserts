@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https',
+        protocol: 'https' ,
         hostname: 'plus.unsplash.com',
         port: '',
         pathname: '/**',
@@ -34,13 +34,6 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
-    ],
-  },
-  experimental: {
-    // This is required to allow the Next.js dev server to be accessed from
-    // the Firebase Studio preview URL.
-    allowedDevOrigins: [
-      '6000-firebase-studio-1767643765423.cluster-omu5xfjeevhmgwf75twfksi4vc.cloudworkstations.dev',
     ],
   },
 };
