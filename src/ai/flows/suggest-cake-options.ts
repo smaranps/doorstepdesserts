@@ -1,13 +1,7 @@
 'use server';
 
 /**
- * @fileOverview This file defines a Genkit flow for suggesting cake options based on user-provided information.
- *
- * The flow takes celebrant details (gender, hobbies) as input and suggests cake options, decorations, and flavors.
- * It exports:
- * - `suggestCakeOptions`: The main function to trigger the cake suggestion flow.
- * - `SuggestCakeOptionsInput`: The TypeScript type definition for the input schema.
- * - `SuggestCakeOptionsOutput`: The TypeScript type definition for the output schema.
+ * @fileOverview This file defines a Genkit flow 
  */
 
 import {ai} from '@/ai/genkit';

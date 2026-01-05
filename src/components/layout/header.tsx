@@ -32,7 +32,7 @@ export function Header() {
         <div className="mr-4 flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <CakeSlice className="h-6 w-6 text-primary" />
-            <span className="font-bold font-headline">Doorstep Delights</span>
+            <span className="font-bold font-headline">Doorstep Desserts</span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
             {navLinks.map((link) => (
@@ -71,7 +71,7 @@ export function Header() {
                 <SheetTitle className="flex items-center space-x-2">
                   <CakeSlice className="h-6 w-6 text-primary" />
                   <span className="font-bold font-headline">
-                    Doorstep Delights
+                    Doorstep Desserts
                   </span>
                 </SheetTitle>
               </SheetHeader>

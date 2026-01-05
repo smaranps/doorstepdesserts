@@ -76,7 +76,7 @@ export function CakeCustomizer() {
           <CardHeader>
             <CardTitle className="font-headline">Cake Details</CardTitle>
             <CardDescription>
-              Tell us a bit about the event and the person of honor.
+              Tell us a bit about the event and the person.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">

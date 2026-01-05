@@ -14,7 +14,7 @@ export default function AdminPage() {
         <Shield className="mx-auto h-12 w-12 text-primary mb-4" />
         <h1 className="text-4xl font-bold font-headline">Admin Panel</h1>
         <p className="text-lg text-muted-foreground">
-          Welcome to the control center for Doorstep Delights.
+          Welcome to the control center for Doorstep Desserts.
         </p>
       </div>
       <Card>
