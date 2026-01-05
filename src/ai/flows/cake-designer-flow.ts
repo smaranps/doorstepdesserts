@@ -29,21 +29,11 @@ const CakeDesignerOutputSchema = z.object({
     .describe('A placeholder image URL from picsum.photos for the generated cake concept.'),
   imageHint: z
     .string()
-    .describe(
-      'One or two keywords that can be used to search for a real image of the cake concept.'
-    ),
-});
-export type CakeDesignerOutput = z.infer<typeof CakeDesignerOutputSchema>;
-
-export async function generateCake(input: CakeDesignerInput): Promise<CakeDesignerOutput> {
-  return cakeDesignerFlow(input);
-}
-
-const prompt = ai.definePrompt({
+...
   name: 'cakeDesignerPrompt',
   input: { schema: CakeDesignerInputSchema },
   output: { schema: CakeDesignerOutputSchema },
-  model: googleAI.model('gemini-1.5-flash'),
+  model: googleAI.model('gemini-1.5-flash-latest'),
   prompt: `
     You are an expert cake designer for a shop called "Doorstep Desserts".
     Your task is to design a unique cake based on a user's event description.
