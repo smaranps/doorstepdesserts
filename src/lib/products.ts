@@ -2,18 +2,18 @@ import type { Dessert } from '@/lib/types';
 
 export const products: Dessert[] = [
     {
-        id: 'chocolate-lava-cake',
-        name: 'Chocolate Lava Cake',
-        description: 'Decadent chocolate cake with a warm, gooey molten chocolate center.',
-        price: 8.99,
-        imageId: 'chocolate-lava-cake'
+        id: 'gooey-brownies',
+        name: 'Gooey Fudge Brownies (6)',
+        description: 'A half-dozen rich, fudgy brownies with a crinkly top.',
+        price: 16.00,
+        imageId: 'gooey-brownies'
     },
     {
-        id: 'strawberry-shortcake',
-        name: 'Strawberry Shortcake',
-        description: 'Layers of fluffy cake, fresh strawberries, and light whipped cream.',
-        price: 7.50,
-        imageId: 'strawberry-shortcake'
+        id: 'chocolate-chip-cookies',
+        name: 'Chocolate Chip Cookies (12)',
+        description: 'A dozen classic chocolate chip cookies, crispy on the outside, chewy on the inside.',
+        price: 20.00,
+        imageId: 'chocolate-chip-cookies'
     },
     {
         id: 'red-velvet-cupcakes',

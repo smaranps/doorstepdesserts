@@ -1,16 +1,16 @@
 {
   "placeholderImages": [
     {
-      "id": "chocolate-lava-cake",
-      "description": "A rich chocolate lava cake with a molten center.",
-      "imageUrl": "https://images.unsplash.com/photo-1602351447937-745cb720612f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjaG9jb2xhdGUlMjBjYWtlfGVufDB8fHx8MTc2NzU4NjA1M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "chocolate cake"
+      "id": "gooey-brownies",
+      "description": "Rich and gooey fudge brownies.",
+      "imageUrl": "https://images.unsplash.com/photo-1593414070538-287a233959da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmb29kJTIwYnJvd25pZXN8ZW58MHx8fHwxNzE3ODE1MTA3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fudge brownies"
     },
     {
-      "id": "strawberry-shortcake",
-      "description": "Classic strawberry shortcake with fresh cream.",
-      "imageUrl": "https://images.unsplash.com/photo-1549007953-2f2dc0b24019?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzdHJhd2JlcnJ5JTIwc2hvcnRjYWtlfGVufDB8fHx8MTc2NzY0NTY3Mnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "strawberry shortcake"
+      "id": "chocolate-chip-cookies",
+      "description": "A stack of freshly baked chocolate chip cookies.",
+      "imageUrl": "https://images.unsplash.com/photo-1598839958372-d7b46481c19a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjaG9jb2xhdGUlMjBjaGlwJTIwY29va2llc3xlbnwwfHx8fDE3MTc4MTUxNDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "chocolate chip cookies"
     },
     {
       "id": "red-velvet-cupcakes",
