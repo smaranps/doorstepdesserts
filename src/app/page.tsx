@@ -11,6 +11,13 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { ChevronDown } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -76,9 +83,28 @@ export default function Home() {
                     <p className="text-lg font-bold text-primary">
                       ${product.price.toFixed(2)}
                     </p>
-                    <Button asChild>
-                      <Link href="/checkout">Buy Now</Link>
-                    </Button>
+                    <div className="flex items-center gap-2">
+                      {product.variants && product.variants.length > 0 && (
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="outline" size="sm">
+                              Flavor
+                              <ChevronDown className="ml-2 h-4 w-4" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent>
+                            {product.variants.map((variant) => (
+                              <DropdownMenuItem key={variant.id}>
+                                {variant.name}
+                              </DropdownMenuItem>
+                            ))}
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      )}
+                      <Button asChild>
+                        <Link href="/checkout">Buy Now</Link>
+                      </Button>
+                    </div>
                   </CardFooter>
                 </Card>
               );

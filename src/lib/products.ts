@@ -16,31 +16,23 @@ export const products: Dessert[] = [
         imageId: 'chocolate-chip-cookies'
     },
     {
-        id: 'red-velvet-cupcakes',
-        name: 'Red Velvet Cupcakes (6)',
-        description: 'Six classic red velvet cupcakes with rich cream cheese frosting.',
+        id: 'assorted-cupcakes',
+        name: 'Assorted Cupcakes (6)',
+        description: 'Six classic cupcakes with rich cream cheese frosting.',
         price: 18.00,
-        imageId: 'red-velvet-cupcakes'
+        imageId: 'red-velvet-cupcakes',
+        variants: [
+            { id: 'chocolate-chip', name: 'Chocolate Chip' },
+            { id: 'vanilla', name: 'Vanilla Bean' },
+            { id: 'red-velvet', name: 'Red Velvet' },
+            { id: 'strawberry-swirl', name: 'Strawberry Swirl' }
+        ]
     },
     {
-        id: 'new-york-cheesecake',
-        name: 'New York Cheesecake',
-        description: 'A slice of dense, smooth, and creamy New York-style cheesecake.',
-        price: 9.25,
-        imageId: 'new-york-cheesecake'
-    },
-    {
-        id: 'macaron-assortment',
-        name: 'Macaron Assortment (12)',
-        description: 'A dozen colorful French macarons in assorted flavors.',
-        price: 24.00,
-        imageId: 'macaron-assortment'
-    },
-    {
-        id: 'lemon-meringue-pie',
-        name: 'Lemon Meringue Pie Slice',
-        description: 'Tangy lemon curd filling topped with fluffy toasted meringue.',
-        price: 7.75,
-        imageId: 'lemon-meringue-pie'
-    },
+        id: 'ice-cream-sundae',
+        name: 'Classic Ice Cream Sundae',
+        description: 'Two scoops of vanilla ice cream with hot fudge, whipped cream, and a cherry.',
+        price: 8.50,
+        imageId: 'ice-cream-sundae'
+    }
 ];
