@@ -4,20 +4,20 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%; /* Light Blue */
+    --background: 210 50% 92%; /* More prominent light blue */
     --foreground: 25 25% 20%; /* Dark Brown */
-    --card: 210 40% 98%;
+    --card: 0 0% 100%; /* White cards to pop against blue bg */
     --card-foreground: 25 25% 20%;
-    --popover: 210 40% 98%;
+    --popover: 0 0% 100%;
     --popover-foreground: 25 25% 20%;
     --primary: 25 45% 30%; /* Chocolate Brown */
     --primary-foreground: 30 50% 96%;
     --secondary: 25 45% 85%;
     --secondary-foreground: 25 45% 30%;
-    --muted: 25 45% 90%;
+    --muted: 210 40% 96%;
     --muted-foreground: 25 25% 45%;
-    --accent: 195 70% 70%; /* Lighter Blue Accent */
-    --accent-foreground: 25 25% 20%;
+    --accent: 205 90% 60%; /* A stronger blue accent */
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 25 45% 80%;
@@ -51,7 +51,7 @@
     --secondary-foreground: 30 30% 80%;
     --muted: 25 35% 25%;
     --muted-foreground: 30 30% 65%;
-    --accent: 195 60% 50%;
+    --accent: 205 90% 60%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
