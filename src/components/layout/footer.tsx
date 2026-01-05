@@ -13,11 +13,6 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Doorstep Desserts. All rights reserved.
           </p>
-          <div className="text-sm">
-            <Link href="/admin" className="text-muted-foreground hover:text-primary transition-colors">
-              Admin
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

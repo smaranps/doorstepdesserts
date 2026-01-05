@@ -3,13 +3,13 @@
     {
       "id": "gooey-brownies",
       "description": "Rich and gooey fudge brownies.",
-      "imageUrl": "https://images.unsplash.com/photo-1582385760705-63c25e8f3b08?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmdWRnZSUyMGJyb3duaWVzfGVufDB8fHx8MTc2NzY0NjkzNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1605974322251-8f0da751f98f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZnVkZ2UlMjBicm93bmllc3xlbnwwfHx8fDE3Njc2NDY5MzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "fudge brownies"
     },
     {
       "id": "chocolate-chip-cookies",
       "description": "A stack of freshly baked chocolate chip cookies.",
-      "imageUrl": "https://images.unsplash.com/photo-1657418830273-40c19cfff4d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjaG9jb2xhdGUlMjBjaGlwJTIwY29va2llc3xlbnwwfHx8fDE3Njc2NDY5MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1583743089695-4b816a340f82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjaG9jb2xhdGUlMjBjaGlwJTIwY29va2llc3xlbnwwfHx8fDE3Njc2NDY5MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "chocolate chip cookies"
     },
     {
@@ -21,7 +21,7 @@
     {
       "id": "new-york-cheesecake",
       "description": "A slice of creamy New York style cheesecake.",
-      "imageUrl": "https://images.unsplash.com/photo-1716579866950-54abe7d4286f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjaGVlc2VjYWtlJTIwc2xpY2V8ZW58MHx8fHwxNzY3NTc5NDY1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1639665047213-d2b6eb288dc8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjaGVlc2VjYWtlJTIwc2xpY2V8ZW58MHx8fHwxNzY3NTc5NDY1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "cheesecake slice"
     },
     {
@@ -33,14 +33,8 @@
     {
       "id": "lemon-meringue-pie",
       "description": "Tangy lemon meringue pie with a toasted top.",
-      "imageUrl": "https://images.unsplash.com/photo-1600856450294-92b3a7062a3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bGVtb24lMjBwaWV8ZW58MHx8fHwxNzY3NjM2NTE1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1681329142517-6daaa56d3670?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxsZW1vbiUyMHBpZXxlbnwwfHx8fDE3Njc2MzY1MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "lemon pie"
-    },
-    {
-      "id": "hero-image",
-      "description": "A beautiful display of various desserts on a table.",
-      "imageUrl": "https://images.unsplash.com/photo-1675949873154-7496809f1c9b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxkZXNzZXJ0JTIwdGFibGV8ZW58MHx8fHwxNzY3NjQ2NTM3fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "dessert table"
     }
   ]
 }

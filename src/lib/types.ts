@@ -5,8 +5,3 @@ export type Dessert = {
   price: number;
   imageId: string;
 };
-
-export type CartItem = {
-  product: Dessert;
-  quantity: number;
-};
