@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -13,6 +12,8 @@ import {
 import type { Dessert } from "@/lib/types";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/hooks/use-cart";
+import { ShoppingCart } from "lucide-react";
 
 interface ProductCardProps {
   product: Dessert;
@@ -20,6 +21,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const image = PlaceHolderImages.find((img) => img.id === product.imageId);
+  const { addItem } = useCart();
 
   return (
     <Card className="flex flex-col overflow-hidden">
@@ -47,8 +49,9 @@ export function ProductCard({ product }: ProductCardProps) {
         <p className="text-lg font-bold text-primary">
           ${product.price.toFixed(2)}
         </p>
-        <Button asChild>
-          <Link href="/checkout">Buy Now</Link>
+        <Button onClick={() => addItem(product)}>
+          <ShoppingCart className="mr-2 h-4 w-4" />
+          Add to Cart
         </Button>
       </CardFooter>
     </Card>
