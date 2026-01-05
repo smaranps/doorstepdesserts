@@ -2,6 +2,9 @@
 import Image from 'next/image';
 import { products } from '@/lib/products';
 import { ProductCard } from '@/components/product-card';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { Bot } from 'lucide-react';
 
 const Logo = () => (
   <svg
@@ -68,6 +71,23 @@ export default function Home() {
           <p className="max-w-2xl mx-auto text-lg md:text-2xl drop-shadow-sm">
             Handcrafted desserts, delivered right to your door.
           </p>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24 bg-secondary/30">
+        <div className="container mx-auto px-4 text-center">
+           <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary mb-4">
+            Design Your Dream Cake
+          </h2>
+          <p className="max-w-2xl mx-auto text-muted-foreground mb-8">
+            Have a special event? Use our AI-powered tool to create the perfect cake with custom flavors and decorations.
+          </p>
+          <Button asChild size="lg">
+            <Link href="/cake-customizer">
+              <Bot className="mr-2" />
+              Start Customizing
+            </Link>
+          </Button>
         </div>
       </section>
 
