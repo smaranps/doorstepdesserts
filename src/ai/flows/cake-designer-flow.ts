@@ -29,7 +29,15 @@ const CakeDesignerOutputSchema = z.object({
     .describe('A placeholder image URL from picsum.photos for the generated cake concept.'),
   imageHint: z
     .string()
-...
+    .describe('A one or two-word hint for searching for a real image.'),
+});
+export type CakeDesignerOutput = z.infer<typeof CakeDesignerOutputSchema>;
+
+export async function generateCake(input: CakeDesignerInput): Promise<CakeDesignerOutput> {
+  return cakeDesignerFlow(input);
+}
+
+const prompt = ai.definePrompt({
   name: 'cakeDesignerPrompt',
   input: { schema: CakeDesignerInputSchema },
   output: { schema: CakeDesignerOutputSchema },
