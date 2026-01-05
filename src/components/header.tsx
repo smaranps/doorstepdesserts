@@ -5,7 +5,7 @@ import { CakeSlice } from "lucide-react";
 
 export function Header() {
   return (
-    <header className="header-drip sticky top-0 z-50 w-full border-b border-border/40 text-primary-foreground">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-primary text-primary-foreground">
       <div className="container flex h-16 items-center">
         <div className="mr-4 flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
