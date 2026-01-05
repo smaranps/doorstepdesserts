@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -11,6 +12,7 @@ import {
 } from "@/components/ui/card";
 import type { Dessert } from "@/lib/types";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { Button } from "@/components/ui/button";
 
 interface ProductCardProps {
   product: Dessert;
@@ -41,10 +43,13 @@ export function ProductCard({ product }: ProductCardProps) {
         </CardTitle>
         <CardDescription>{product.description}</CardDescription>
       </CardContent>
-      <CardFooter className="p-4 flex justify-end items-center">
+      <CardFooter className="p-4 flex justify-between items-center">
         <p className="text-lg font-bold text-primary">
           ${product.price.toFixed(2)}
         </p>
+        <Button asChild>
+          <Link href="/checkout">Buy Now</Link>
+        </Button>
       </CardFooter>
     </Card>
   );

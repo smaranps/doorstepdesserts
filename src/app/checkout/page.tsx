@@ -1,110 +1,117 @@
 "use client";
 
-import { useCart } from "@/hooks/use-cart";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { CreditCard, ShoppingCart } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
-import { createPaymentIntent } from "@/app/checkout/actions";
-import { CheckoutForm } from "@/components/checkout-form";
-
-// Make sure to add your publishable key as an environment variable
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 export default function CheckoutPage() {
-  const { items, cartTotal, cartCount, clearCart } = useCart();
-  const router = useRouter();
-  const [clientSecret, setClientSecret] = useState<string | null>(null);
+    const router = useRouter();
 
-  useEffect(() => {
-    if (cartCount === 0) {
-      router.push("/");
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        // Here you would typically handle the form submission,
+        // e.g., send data to a server, process payment.
+        // For this simple version, we'll just redirect to a success page.
+        router.push("/tracking?status=success");
     }
-  }, [cartCount, router]);
-
-  useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
-    if (cartTotal > 0) {
-      createPaymentIntent(cartTotal)
-        .then((secret) => {
-          if (secret) {
-            setClientSecret(secret);
-          }
-        })
-        .catch(console.error);
-    }
-  }, [cartTotal]);
-
-  const handleSuccessfulCheckout = () => {
-    clearCart();
-    router.push("/tracking?status=success");
-  }
-
-  if (cartCount === 0 || !clientSecret) {
-    // You can add a loading spinner here
-    return null;
-  }
 
   return (
-    <div className="container mx-auto max-w-5xl py-12 px-4">
-      <h1 className="text-4xl font-headline font-bold mb-8">Checkout</h1>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-        <div className="lg:col-span-2 space-y-8">
-          <Elements options={{ clientSecret }} stripe={stripePromise}>
-            <CheckoutForm clientSecret={clientSecret} onSuccessfulCheckout={handleSuccessfulCheckout}/>
-          </Elements>
-        </div>
-
-        <div className="lg:col-span-1">
-          <Card className="sticky top-24">
-            <CardHeader>
-              <CardTitle>Order Summary</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {items.map((item) => (
-                <div
-                  key={item.product.id}
-                  className="flex justify-between items-center text-sm"
-                >
-                  <span className="font-semibold">
-                    {item.product.name} x{item.quantity}
-                  </span>
-                  <span className="text-muted-foreground">
-                    ${(item.product.price * item.quantity).toFixed(2)}
-                  </span>
-                </div>
-              ))}
-              <Separator />
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Subtotal</span>
-                <span>${cartTotal.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Shipping</span>
-                <span>$5.00</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Taxes</span>
-                <span>${(cartTotal * 0.08).toFixed(2)}</span>
-              </div>
-              <Separator />
-              <div className="flex justify-between font-bold text-lg">
-                <span>Total</span>
-                <span>
-                  ${(cartTotal + 5.0 + cartTotal * 0.08).toFixed(2)}
-                </span>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+    <div className="container mx-auto max-w-2xl py-12 px-4">
+      <div className="text-center mb-8">
+        <ShoppingCart className="mx-auto h-12 w-12 text-primary mb-4" />
+        <h1 className="text-4xl font-bold font-headline">Checkout</h1>
+        <p className="text-lg text-muted-foreground">
+          Complete your order below.
+        </p>
       </div>
+
+      <Card>
+        <form onSubmit={handleSubmit}>
+          <CardHeader>
+            <CardTitle>Contact & Shipping</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="name">Full Name</Label>
+                <Input id="name" placeholder="Jane Doe" required />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="email">Email Address</Label>
+                <Input id="email" type="email" placeholder="jane@example.com" required />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="address">Street Address</Label>
+              <Input id="address" placeholder="123 Dessert Lane" required />
+            </div>
+             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+               <div className="space-y-2">
+                <Label htmlFor="city">City</Label>
+                <Input id="city" placeholder="Sugartown" required />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="state">State</Label>
+                <Input id="state" placeholder="CA" required />
+              </div>
+               <div className="space-y-2">
+                <Label htmlFor="zip">Zip Code</Label>
+                <Input id="zip" placeholder="90210" required />
+              </div>
+            </div>
+
+            <div className="!mt-8 space-y-4">
+                <h3 className="font-semibold text-lg">Payment Method</h3>
+                 <RadioGroup defaultValue="card" className="space-y-2">
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="card" id="card" />
+                        <Label htmlFor="card">Credit / Debit Card</Label>
+                    </div>
+                     <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="paypal" id="paypal" disabled/>
+                        <Label htmlFor="paypal">PayPal (coming soon)</Label>
+                    </div>
+                </RadioGroup>
+            </div>
+
+             <div className="space-y-2">
+                <Label htmlFor="card-number">Card Number</Label>
+                <div className="relative">
+                    <Input id="card-number" placeholder="•••• •••• •••• ••••" required />
+                    <CreditCard className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="expiry">Expiry Date</Label>
+                <Input id="expiry" placeholder="MM / YY" required />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="cvc">CVC</Label>
+                <Input id="cvc" placeholder="123" required />
+              </div>
+            </div>
+
+
+          </CardContent>
+          <div className="p-6 pt-0">
+             <Button type="submit" className="w-full" size="lg">
+                Place Order
+            </Button>
+          </div>
+        </form>
+      </Card>
     </div>
   );
 }
