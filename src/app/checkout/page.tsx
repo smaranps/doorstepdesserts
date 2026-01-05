@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -12,7 +13,7 @@ import { Label } from '@/components/ui/label';
 
 export default function CheckoutPage() {
   return (
-    <div className="container mx-auto max-w-lg py-12 px-4">
+    <div className="container mx-auto py-12 px-4 grid md:grid-cols-2 gap-12 items-start">
       <Card>
         <CardHeader>
           <CardTitle className="font-headline text-2xl">Checkout</CardTitle>
@@ -48,6 +49,16 @@ export default function CheckoutPage() {
           </Button>
         </CardContent>
       </Card>
+      <div className="hidden md:block rounded-lg overflow-hidden">
+        <Image
+          src="https://images.unsplash.com/photo-1605974322251-8f0da751f98f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZnVkZ2UlMjBicm93bmllc3xlbnwwfHx8fDE3Njc2NDY5MzR8MA&ixlib=rb-4.1.0&q=80&w=1080"
+          alt="Gooey Fudge Brownies"
+          width={600}
+          height={400}
+          className="w-full h-auto object-cover"
+          data-ai-hint="fudge brownies"
+        />
+      </div>
     </div>
   );
 }
