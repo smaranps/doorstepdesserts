@@ -1,3 +1,46 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "chocolate-lava-cake",
+      "description": "A rich chocolate lava cake with a molten center.",
+      "imageUrl": "https://images.unsplash.com/photo-1602351447937-745cb720612f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjaG9jb2xhdGUlMjBjYWtlfGVufDB8fHx8MTc2NzU4NjA1M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "chocolate cake"
+    },
+    {
+      "id": "strawberry-shortcake",
+      "description": "Classic strawberry shortcake with fresh cream.",
+      "imageUrl": "https://images.unsplash.com/photo-1549007953-2f2dc0b24019?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzdHJhd2JlcnJ5JTIwc2hvcnRjYWtlfGVufDB8fHx8MTc2NzY0NTY3Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "strawberry shortcake"
+    },
+    {
+      "id": "red-velvet-cupcakes",
+      "description": "A dozen red velvet cupcakes with cream cheese frosting.",
+      "imageUrl": "https://images.unsplash.com/photo-1729268483651-b66bfae86796?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxyZWQlMjB2ZWx2ZXQlMjBjdXBjYWtlc3xlbnwwfHx8fDE3Njc2NDY1Mzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "red velvet cupcakes"
+    },
+    {
+      "id": "new-york-cheesecake",
+      "description": "A slice of creamy New York style cheesecake.",
+      "imageUrl": "https://images.unsplash.com/photo-1720586407185-c7651d7d0397?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjaGVlc2VjYWtlJTIwc2xpY2V8ZW58MHx8fHwxNzY3NTc5NDY1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cheesecake slice"
+    },
+    {
+      "id": "macaron-assortment",
+      "description": "A colorful assortment of French macarons.",
+      "imageUrl": "https://images.unsplash.com/photo-1709224880492-604a7b15c11d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjb2xvcmZ1bCUyMG1hY2Fyb25zfGVufDB8fHx8MTc2NzY0MDk3N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "colorful macarons"
+    },
+    {
+      "id": "lemon-meringue-pie",
+      "description": "Tangy lemon meringue pie with a toasted top.",
+      "imageUrl": "https://images.unsplash.com/photo-1600856450294-92b3a7062a3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bGVtb24lMjBwaWV8ZW58MHx8fHwxNzY3NjM2NTE1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "lemon pie"
+    },
+    {
+      "id": "hero-image",
+      "description": "A beautiful display of various desserts on a table.",
+      "imageUrl": "https://images.unsplash.com/photo-1701086490343-191fec37d255?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxkZXNzZXJ0JTIwdGFibGV8ZW58MHx8fHwxNzY3NjQ2NTM3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dessert table"
+    }
+  ]
 }
