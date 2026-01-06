@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { createContext, useContext, useState, ReactNode, useCallback } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useCallback, useMemo } from 'react';
 import type { CartItem } from '@/lib/types';
 
 interface CartContextType {
@@ -24,71 +24,66 @@ export const useCart = () => {
   return context;
 };
 
-// Helper to create a unique ID for a cart item based on its product ID and variant ID
 const getCartItemId = (itemId: string, variantId: string | null) => {
-    return variantId ? `${itemId}-${variantId}` : itemId;
+  return variantId ? `${itemId}-${variantId}` : `${itemId}-null`;
 }
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [items, setItems] = useState<CartItem[]>([]);
+  const [items, setItems] = useState<{ [key: string]: CartItem }>({});
 
   const addItem = useCallback((itemToAdd: CartItem) => {
+    const cartItemId = getCartItemId(itemToAdd.id, itemToAdd.variant?.id || null);
     setItems((prevItems) => {
-      const existingItem = prevItems.find(
-        (item) => item.id === itemToAdd.id && item.variant?.id === itemToAdd.variant?.id
-      );
-
-      if (existingItem) {
-        // If item exists, map over the items and update the quantity of the matching one
-        return prevItems.map((item) =>
-          item.id === itemToAdd.id && item.variant?.id === itemToAdd.variant?.id
-            ? { ...item, quantity: item.quantity + (itemToAdd.quantity || 1) }
-            : item
-        );
+      const newItems = { ...prevItems };
+      if (newItems[cartItemId]) {
+        newItems[cartItemId] = {
+          ...newItems[cartItemId],
+          quantity: newItems[cartItemId].quantity + (itemToAdd.quantity || 1),
+        };
       } else {
-        // If item doesn't exist, add it to the cart
-        return [...prevItems, { ...itemToAdd, quantity: itemToAdd.quantity || 1 }];
+        newItems[cartItemId] = { ...itemToAdd, quantity: itemToAdd.quantity || 1 };
       }
+      return newItems;
     });
   }, []);
 
   const removeItem = useCallback((itemId: string, variantId: string | null) => {
-    setItems((prevItems) =>
-      prevItems.filter(
-        (item) => !(item.id === itemId && item.variant?.id === variantId)
-      )
-    );
+    const cartItemId = getCartItemId(itemId, variantId);
+    setItems((prevItems) => {
+      const { [cartItemId]: _, ...rest } = prevItems;
+      return rest;
+    });
   }, []);
 
   const updateQuantity = useCallback((itemId: string, variantId: string | null, quantity: number) => {
+    const cartItemId = getCartItemId(itemId, variantId);
     setItems((prevItems) => {
-      // If quantity is 0 or less, remove the item
+      const newItems = { ...prevItems };
       if (quantity <= 0) {
-        return prevItems.filter(
-          (item) => !(item.id === itemId && item.variant?.id === variantId)
-        );
+        delete newItems[cartItemId];
+      } else if (newItems[cartItemId]) {
+        newItems[cartItemId] = { ...newItems[cartItemId], quantity };
       }
-      
-      // Otherwise, update the quantity of the matching item
-      return prevItems.map((item) => {
-        if (item.id === itemId && item.variant?.id === variantId) {
-          return { ...item, quantity };
-        }
-        return item;
-      });
+      return newItems;
     });
   }, []);
 
   const clearCart = useCallback(() => {
-    setItems([]);
+    setItems({});
   }, []);
 
-  const cartCount = items.reduce((count, item) => count + item.quantity, 0);
+  const cartItemsArray = useMemo(() => Object.values(items), [items]);
 
-  const subtotal = items.reduce((total, item) => total + item.price * item.quantity, 0);
+  const cartCount = useMemo(() => {
+    return cartItemsArray.reduce((count, item) => count + item.quantity, 0);
+  }, [cartItemsArray]);
+
+  const subtotal = useMemo(() => {
+    return cartItemsArray.reduce((total, item) => total + item.price * item.quantity, 0);
+  }, [cartItemsArray]);
 
   return (
-    <CartContext.Provider value={{ items, addItem, removeItem, updateQuantity, clearCart, cartCount, subtotal }}>
+    <CartContext.Provider value={{ items: cartItemsArray, addItem, removeItem, updateQuantity, clearCart, cartCount, subtotal }}>
       {children}
     </CartContext.Provider>
   );
