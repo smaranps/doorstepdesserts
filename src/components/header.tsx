@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { CartSheet } from "./cart-sheet";
 
 const Logo = () => (
   <svg
-    className="h-8 w-8 text-primary-foreground"
+    className="h-8 w-8 text-primary"
     width="24"
     height="24"
     viewBox="0 0 24 24"
@@ -17,7 +18,7 @@ const Logo = () => (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      fill="#FADADD"
+      fill="hsla(var(--primary-foreground), 0.2)"
     />
     <path
       d="M2 7L12 12L22 7"
@@ -47,16 +48,20 @@ const Logo = () => (
 export function Header() {
   return (
     <header
-      className="sticky top-0 z-50 w-full border-b border-border/40 text-primary-foreground bg-primary"
+      className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
     >
       <div className="container flex h-16 items-center">
         <div className="mr-4 flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <Logo />
-            <span className="font-bold font-headline text-primary-foreground">
+            <span className="font-bold font-headline text-primary">
               Doorstep Desserts
             </span>
           </Link>
+        </div>
+
+        <div className="flex flex-1 items-center justify-end">
+            <CartSheet />
         </div>
       </div>
     </header>

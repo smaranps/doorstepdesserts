@@ -2,7 +2,6 @@
 "use client";
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { useState } from 'react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import type { Dessert, DessertVariant } from '@/lib/types';
@@ -21,7 +20,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, ShoppingCart } from 'lucide-react';
+import { useCart } from '@/context/cart-context';
 
 interface ProductCardProps {
   product: Dessert;
@@ -31,8 +31,20 @@ export function ProductCard({ product }: ProductCardProps) {
   const [selectedVariant, setSelectedVariant] = useState<DessertVariant | null>(
     product.variants?.[0] || null
   );
+  const { addItem } = useCart();
 
   const image = PlaceHolderImages.find((img) => img.id === product.imageId);
+
+  const handleAddToCart = () => {
+    addItem({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        variant: selectedVariant,
+        quantity: 1,
+        imageUrl: image?.imageUrl,
+    });
+  }
 
   return (
     <Card
@@ -84,8 +96,9 @@ export function ProductCard({ product }: ProductCardProps) {
               </DropdownMenuContent>
             </DropdownMenu>
           )}
-          <Button asChild>
-            <Link href="/checkout">Buy Now</Link>
+          <Button onClick={handleAddToCart}>
+            <ShoppingCart className="mr-2 h-4 w-4" />
+            Add to Cart
           </Button>
         </div>
       </CardFooter>

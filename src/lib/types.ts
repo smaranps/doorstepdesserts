@@ -11,3 +11,12 @@ export type Dessert = {
   imageId: string;
   variants?: DessertVariant[];
 };
+
+export type CartItem = {
+    id: string;
+    name: string;
+    price: number;
+    quantity: number;
+    variant: DessertVariant | null;
+    imageUrl?: string;
+}
