@@ -102,6 +102,7 @@ export default function CheckoutPage() {
               value={cardNumber}
               onChange={(e) => setCardNumber(formatCardNumber(e.target.value))}
               maxLength={19}
+              
             />
             {errors.cardNumber && <p className="text-sm text-destructive">{errors.cardNumber}</p>}
           </div>
@@ -117,13 +118,13 @@ export default function CheckoutPage() {
               {errors.expiry && <p className="text-sm text-destructive">{errors.expiry}</p>}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="cvc">CVC</Label>
+              <Label htmlFor="cvc">CVV</Label>
               <Input
                 id="cvc"
                 placeholder="123"
                 value={cvc}
                 onChange={(e) => setCvc(e.target.value.replace(/\D/g, ''))}
-                maxLength={4}
+                maxLength={3}
               />
               {errors.cvc && <p className="text-sm text-destructive">{errors.cvc}</p>}
             </div>
