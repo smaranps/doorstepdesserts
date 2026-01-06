@@ -10,6 +10,7 @@ export type Dessert = {
   price: number;
   imageId: string;
   variants?: DessertVariant[];
+  featured?: boolean;
 };
 
 export type CartItem = {

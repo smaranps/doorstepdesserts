@@ -40,7 +40,8 @@ export const products: Dessert[] = [
         name: 'Classic Cheesecake Slice',
         description: 'A single slice of rich and creamy New York-style cheesecake with a graham cracker crust.',
         price: 7.50,
-        imageId: 'classic-cheesecake'
+        imageId: 'classic-cheesecake',
+        featured: true
     },
     {
         id: 'lemon-meringue-pie',

@@ -4,9 +4,13 @@
 import Image from 'next/image';
 import { products } from '@/lib/products';
 import { ProductCard } from '@/components/product-card';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { useCart } from '@/context/cart-context';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { ShoppingCart } from 'lucide-react';
 
 const Logo = () => (
   <svg
@@ -54,6 +58,7 @@ export default function Home() {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const menuRef = useRef<HTMLDivElement>(null);
+  const { addItem } = useCart();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -84,6 +89,10 @@ export default function Home() {
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       product.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const featuredProduct = useMemo(() => products.find(p => p.featured), []);
+  const featuredImage = useMemo(() => featuredProduct ? PlaceHolderImages.find(img => img.id === featuredProduct.imageId) : null, [featuredProduct]);
+
 
   return (
     <div className="bg-background">
@@ -146,6 +155,49 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {featuredProduct && (
+        <section id="featured" className="py-16 md:py-24 bg-secondary/30">
+          <div className="container mx-auto px-4">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="rounded-lg overflow-hidden shadow-xl aspect-[4/3] relative">
+                {featuredImage && (
+                  <Image
+                    src={featuredImage.imageUrl}
+                    alt={featuredProduct.name}
+                    fill
+                    className="object-cover"
+                    data-ai-hint={featuredImage.imageHint}
+                  />
+                )}
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-primary mb-2">Featured Dessert</h3>
+                <h2 className="text-3xl md:text-4xl font-headline font-bold mb-4">{featuredProduct.name}</h2>
+                <p className="text-muted-foreground mb-6">{featuredProduct.description}</p>
+                 <div className="flex items-center gap-4">
+                    <p className="text-2xl font-bold text-primary">${featuredProduct.price.toFixed(2)}</p>
+                    <Button 
+                      size="lg"
+                      onClick={() => addItem({
+                        id: featuredProduct.id,
+                        name: featuredProduct.name,
+                        price: featuredProduct.price,
+                        quantity: 1,
+                        variant: null,
+                        imageUrl: featuredImage?.imageUrl
+                      })}
+                    >
+                      <ShoppingCart className="mr-2 h-5 w-5" />
+                      Add to Cart
+                    </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
        <section id="about" className="relative py-16 md:py-24 text-white">
         <div className="absolute inset-0">
           <Image
