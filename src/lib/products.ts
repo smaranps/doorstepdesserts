@@ -3,15 +3,15 @@ import type { Dessert } from '@/lib/types';
 export const products: Dessert[] = [
     {
         id: 'gooey-brownies',
-        name: 'Gooey Fudge Brownies (4)',
-        description: 'A half-dozen rich, fudgy brownies with a crinkly top.',
+        name: 'Fudge Brownies (4)',
+        description: 'A half-dozen rich, fudgy brownies with a crispy top and amazing taste.',
         price: 12.00,
         imageId: 'gooey-brownies'
     },
     {
         id: 'chocolate-chip-cookies',
         name: 'Chocolate Chip Cookies (12)',
-        description: 'A dozen classic chocolate chip cookies, crispy on the outside, chewy on the inside.',
+        description: 'A dozen classic chocolate chip cookies, crispy on the outside, chewy on the inside. It is a tasty treat which is quick to eat.',
         price: 20.00,
         imageId: 'chocolate-chip-cookies'
     },
@@ -37,8 +37,8 @@ export const products: Dessert[] = [
     },
     {
         id: 'classic-cheesecake',
-        name: 'Classic Cheesecake Slice',
-        description: 'A single slice of rich and creamy New York-style cheesecake with a graham cracker crust.',
+        name: 'Classic Cheesecake 3 slices',
+        description: '3 slices of rich and creamy New York-style cheesecake with a graham cracker crust. Made with pure homemade ingredients.',
         price: 7.50,
         imageId: 'classic-cheesecake',
         featured: true
@@ -46,8 +46,8 @@ export const products: Dessert[] = [
     {
         id: 'lemon-meringue-pie',
         name: 'Lemon Meringue Pie Slice',
-        description: 'A slice of tangy lemon filling topped with fluffy toasted meringue.',
-        price: 7.00,
+        description: 'A slice of tangy lemon filling topped with fluffy toasted meringue giving an amazing taste.',
+        price: 4.00,
         imageId: 'lemon-meringue-pie'
     }
 ];

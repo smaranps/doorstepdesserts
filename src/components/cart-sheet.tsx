@@ -96,7 +96,7 @@ export function CartSheet() {
                         <span>${subtotal.toFixed(2)}</span>
                     </div>
                     <p className="text-xs text-muted-foreground">
-                        Shipping and taxes will be calculated at checkout.
+                        Taxes will be calculated at checkout.
                     </p>
                      <SheetClose asChild>
                         <Button asChild className="w-full">

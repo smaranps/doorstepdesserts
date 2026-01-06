@@ -227,10 +227,10 @@ export default function Home() {
                 About Us
               </h2>
               <p className="text-gray-300 mb-4">
-                Founded by Nikola and Smaran in 2026, both of them carried out this operation with the goal of having valiant customer service and amazing food quality. 
+                Founded by Nikola Kostic and Smaran Pinisetty in January 2026, both of them carried out this operation with the goal of having valiant customer service and amazing food quality while making sure everything is locally sourced and homemade. 
               </p>
               <p className="text-gray-300">
-                Our company only the finest ingredients that are sourced locally to handcraft every brownie, cookie, and cake. Our mission is to deliver a little piece of happiness and fun, right to your doorstep.
+                Our company uses only the finest ingredients that are sourced locally to handcraft every brownie, cookie, and cake. Our goal is to deliver a little piece of happiness and fun, right to your doorstep. If it means to celebrate a party with others or just hungry, Doorstep Desserts is always ready to serve you.
               </p>
             </div>
           </div>
