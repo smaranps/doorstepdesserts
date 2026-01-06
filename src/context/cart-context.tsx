@@ -24,21 +24,30 @@ export const useCart = () => {
   return context;
 };
 
+// Helper to create a unique ID for a cart item based on its product ID and variant ID
+const getCartItemId = (itemId: string, variantId: string | null) => {
+    return variantId ? `${itemId}-${variantId}` : itemId;
+}
+
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [items, setItems] = useState<CartItem[]>([]);
 
   const addItem = useCallback((itemToAdd: CartItem) => {
     setItems((prevItems) => {
-      const existingItemIndex = prevItems.findIndex(
+      const existingItem = prevItems.find(
         (item) => item.id === itemToAdd.id && item.variant?.id === itemToAdd.variant?.id
       );
 
-      if (existingItemIndex > -1) {
-        const newItems = [...prevItems];
-        newItems[existingItemIndex].quantity += 1;
-        return newItems;
+      if (existingItem) {
+        // If item exists, map over the items and update the quantity of the matching one
+        return prevItems.map((item) =>
+          item.id === itemToAdd.id && item.variant?.id === itemToAdd.variant?.id
+            ? { ...item, quantity: item.quantity + (itemToAdd.quantity || 1) }
+            : item
+        );
       } else {
-        return [...prevItems, { ...itemToAdd, quantity: 1 }];
+        // If item doesn't exist, add it to the cart
+        return [...prevItems, { ...itemToAdd, quantity: itemToAdd.quantity || 1 }];
       }
     });
   }, []);
@@ -53,16 +62,20 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const updateQuantity = useCallback((itemId: string, variantId: string | null, quantity: number) => {
     setItems((prevItems) => {
-        if (quantity <= 0) {
-            return prevItems.filter(item => !(item.id === itemId && item.variant?.id === variantId));
+      // If quantity is 0 or less, remove the item
+      if (quantity <= 0) {
+        return prevItems.filter(
+          (item) => !(item.id === itemId && item.variant?.id === variantId)
+        );
+      }
+      
+      // Otherwise, update the quantity of the matching item
+      return prevItems.map((item) => {
+        if (item.id === itemId && item.variant?.id === variantId) {
+          return { ...item, quantity };
         }
-        
-        return prevItems.map((item) => {
-            if (item.id === itemId && item.variant?.id === variantId) {
-            return { ...item, quantity };
-            }
-            return item;
-        });
+        return item;
+      });
     });
   }, []);
 
