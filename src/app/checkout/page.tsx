@@ -15,6 +15,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useState, useEffect } from 'react';
+import { useCart } from '@/context/cart-context';
+import { useRouter } from 'next/navigation';
 
 type DeliveryOption = 'delivery' | 'pickup';
 
@@ -30,6 +32,9 @@ export default function CheckoutPage() {
   const [cvc, setCvc] = useState('');
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [isFormValid, setIsFormValid] = useState(false);
+  const { items } = useCart();
+  const router = useRouter();
+
 
   const formatCardNumber = (value: string) => {
     return value
@@ -84,6 +89,13 @@ export default function CheckoutPage() {
 
     validateForm();
   }, [name, email, deliveryOption, address, city, postalCode, cardNumber, expiry, cvc]);
+
+  const handlePlaceOrder = () => {
+    if (isFormValid) {
+        sessionStorage.setItem('orderConfirmation', JSON.stringify(items));
+        router.push('/checkout/success');
+    }
+  }
 
 
   return (
@@ -204,8 +216,8 @@ export default function CheckoutPage() {
                 </div>
             </div>
           </div>
-          <Button asChild={isFormValid} disabled={!isFormValid} className="w-full" type="submit">
-            {isFormValid ? <Link href="/checkout/success">Place Order</Link> : <span>Place Order</span>}
+          <Button onClick={handlePlaceOrder} disabled={!isFormValid} className="w-full" type="submit">
+            Place Order
           </Button>
         </CardContent>
       </Card>
@@ -222,5 +234,3 @@ export default function CheckoutPage() {
     </div>
   );
 }
-
-    
