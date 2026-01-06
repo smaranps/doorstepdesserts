@@ -73,9 +73,9 @@ const cakeDesignerFlow = ai.defineFlow(
         throw new Error("The AI failed to generate a cake design description.");
     }
 
-    // Step 2: Create a relevant image URL from Unsplash.
-    const searchTerms = encodeURIComponent(textOutput.imageHint);
-    const imageUrl = `https://source.unsplash.com/600x400/?${searchTerms},cake`;
+    // Step 2: Create a consistent placeholder image URL using the image hint as a seed.
+    const seed = encodeURIComponent(textOutput.imageHint);
+    const imageUrl = `https://picsum.photos/seed/${seed}/600/400`;
     
     // Step 3: Combine text and image into the final output.
     return {
