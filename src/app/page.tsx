@@ -1,7 +1,11 @@
 
+'use client';
+
 import Image from 'next/image';
 import { products } from '@/lib/products';
 import { ProductCard } from '@/components/product-card';
+import { useEffect, useRef, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 const Logo = () => (
   <svg
@@ -46,6 +50,33 @@ const Logo = () => (
 
 
 export default function Home() {
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsMenuVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        rootMargin: '0px 0px -100px 0px',
+      }
+    );
+
+    if (menuRef.current) {
+      observer.observe(menuRef.current);
+    }
+
+    return () => {
+      if (menuRef.current) {
+        observer.unobserve(menuRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div className="bg-background">
       <section className="relative text-center py-20 md:py-32 px-4 flex flex-col items-center justify-center text-white">
@@ -70,14 +101,23 @@ export default function Home() {
           </p>
         </div>
       </section>
-      <section id="menu" className="py-16 md:py-24">
+      <section id="menu" className="py-16 md:py-24" ref={menuRef}>
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12 text-primary">
             Our Menu
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
+            {products.map((product, index) => (
+              <div
+                key={product.id}
+                className={cn(
+                  'opacity-0 transition-all duration-700 ease-out',
+                  isMenuVisible && 'animate-fade-in-up'
+                )}
+                style={{ animationDelay: `${index * 150}ms` }}
+              >
+                <ProductCard product={product} />
+              </div>
             ))}
           </div>
         </div>
