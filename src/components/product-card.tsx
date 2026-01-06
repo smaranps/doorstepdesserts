@@ -46,6 +46,8 @@ export function ProductCard({ product }: ProductCardProps) {
     });
   }
 
+  const hasVariants = product.variants && product.variants.length > 0;
+
   return (
     <Card
       key={product.id}
@@ -71,35 +73,42 @@ export function ProductCard({ product }: ProductCardProps) {
         </CardTitle>
         <CardDescription>{product.description}</CardDescription>
       </CardContent>
-      <CardFooter className="p-4 flex justify-between items-center bg-muted/50">
+      <CardFooter className="p-4 flex flex-wrap justify-between items-center bg-muted/50 gap-4">
         <p className="text-lg font-bold text-primary">
           ${product.price.toFixed(2)}
         </p>
         <div className="flex items-center gap-2">
-          {product.variants && product.variants.length > 0 && (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm">
-                  {selectedVariant ? selectedVariant.name : 'Flavor'}
-                  <ChevronDown className="ml-2 h-4 w-4" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                {product.variants.map((variant) => (
-                  <DropdownMenuItem
-                    key={variant.id}
-                    onSelect={() => setSelectedVariant(variant)}
-                  >
-                    {variant.name}
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+          {hasVariants ? (
+            <>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="sm" className="w-32 justify-between">
+                    {selectedVariant ? selectedVariant.name : 'Flavor'}
+                    <ChevronDown className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  {product.variants!.map((variant) => (
+                    <DropdownMenuItem
+                      key={variant.id}
+                      onSelect={() => setSelectedVariant(variant)}
+                    >
+                      {variant.name}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <Button onClick={handleAddToCart} size="sm">
+                <ShoppingCart className="mr-2 h-4 w-4" />
+                Add
+              </Button>
+            </>
+          ) : (
+            <Button onClick={handleAddToCart}>
+              <ShoppingCart className="mr-2 h-4 w-4" />
+              Add to Cart
+            </Button>
           )}
-          <Button onClick={handleAddToCart}>
-            <ShoppingCart className="mr-2 h-4 w-4" />
-            Add to Cart
-          </Button>
         </div>
       </CardFooter>
     </Card>
