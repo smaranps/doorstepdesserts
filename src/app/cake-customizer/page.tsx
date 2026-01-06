@@ -2,7 +2,6 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -78,14 +77,13 @@ export default function CakeCustomizerPage() {
             <h3 className="text-xl font-headline text-center mb-4">Your Custom Cake</h3>
             {isLoading && (
               <div className="space-y-4">
-                <Skeleton className="h-64 w-full" />
                 <Skeleton className="h-8 w-3/4 mx-auto" />
                 <Skeleton className="h-16 w-full" />
               </div>
             )}
             {!isLoading && !cakeIdea && !error && (
                <div className="text-center text-muted-foreground">
-                Your AI-generated cake description and image will appear here.
+                Your AI-generated cake description will appear here.
               </div>
             )}
             {error && (
@@ -95,16 +93,6 @@ export default function CakeCustomizerPage() {
             )}
             {cakeIdea && (
               <div className="text-center space-y-4">
-                <div className="relative aspect-video w-full rounded-lg overflow-hidden border shadow-lg">
-                  <Image
-                    src={cakeIdea.imageUrl}
-                    alt={cakeIdea.cakeName}
-                    fill
-                    className="object-cover"
-                    data-ai-hint={cakeIdea.imageHint}
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
                  <h4 className="text-2xl font-headline text-primary">{cakeIdea.cakeName}</h4>
                  <p className="text-muted-foreground">{cakeIdea.cakeDescription}</p>
               </div>

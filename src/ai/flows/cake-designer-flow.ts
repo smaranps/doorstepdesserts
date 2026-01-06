@@ -24,9 +24,6 @@ const CakeDesignerOutputSchema = z.object({
     .describe(
       'A detailed, two-sentence description of the cake, including flavors, colors, and decorations.'
     ),
-  imageUrl: z
-    .string()
-    .describe('A data URI of the generated cake concept image.'),
   imageHint: z
     .string()
     .describe('A one or two-word hint for searching for a real image.'),
@@ -40,11 +37,7 @@ export async function generateCake(input: CakeDesignerInput): Promise<CakeDesign
 const textPrompt = ai.definePrompt({
   name: 'cakeDesignerTextPrompt',
   input: { schema: CakeDesignerInputSchema },
-  output: { schema: z.object({
-    cakeName: CakeDesignerOutputSchema.shape.cakeName,
-    cakeDescription: CakeDesignerOutputSchema.shape.cakeDescription,
-    imageHint: CakeDesignerOutputSchema.shape.imageHint,
-  }) },
+  output: { schema: CakeDesignerOutputSchema },
   model: googleAI.model('gemini-2.5-flash'),
   prompt: `
     You are an expert cake designer for a shop called "Doorstep Desserts".
@@ -72,15 +65,8 @@ const cakeDesignerFlow = ai.defineFlow(
     if (!textOutput) {
         throw new Error("The AI failed to generate a cake design description.");
     }
-
-    // Step 2: Create a relevant image URL from Unsplash using the hint.
-    const encodedHint = encodeURIComponent(textOutput.imageHint);
-    const imageUrl = `https://source.unsplash.com/600x400/?${encodedHint},cake`;
     
-    // Step 3: Combine text and image into the final output.
-    return {
-        ...textOutput,
-        imageUrl,
-    };
+    // Step 2: Return the text output.
+    return textOutput;
   }
 );
