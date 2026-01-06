@@ -35,10 +35,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
       if (existingItemIndex > -1) {
         const newItems = [...prevItems];
-        newItems[existingItemIndex].quantity += 1;
+        newItems[existingItemIndex].quantity += itemToAdd.quantity;
         return newItems;
       } else {
-        return [...prevItems, { ...itemToAdd, quantity: 1 }];
+        return [...prevItems, itemToAdd];
       }
     });
   };
