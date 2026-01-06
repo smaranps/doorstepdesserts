@@ -2,6 +2,7 @@
 const nextConfig = {
   output: 'export',
   basePath: '/doorstepdesserts',
+  assetPrefix: '/doorstepdesserts/',
   typescript: {
     ignoreBuildErrors: true,
   },
