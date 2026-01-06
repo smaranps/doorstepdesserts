@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  basePath: '/doorstepdesserts',
-  assetPrefix: '/doorstepdesserts/',
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -10,7 +7,6 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
