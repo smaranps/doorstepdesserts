@@ -88,7 +88,7 @@ export default function Home() {
        <section id="about" className="relative py-16 md:py-24 text-white">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3"
+            src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZGVzc2VydHxlbnwwfHwwfHx8MA%3D%3D"
             alt="Baking ingredients"
             fill
             className="object-cover"
@@ -114,10 +114,10 @@ export default function Home() {
                 About Us
               </h2>
               <p className="text-gray-300 mb-4">
-                Founded in a small kitchen with a big dream, Doorstep Desserts is a passion project dedicated to the art of baking. We believe that a great dessert can make any day special.
+                Founded by Nikola and Smaran in 2026, both of them carried out this operation with the goal of having valiant customer service and amazing food quality. 
               </p>
               <p className="text-gray-300">
-                We use only the finest ingredients, sourced locally whenever possible, to handcraft every brownie, cookie, and cake. Our mission is simple: to deliver a little piece of happiness, right to your doorstep.
+                Our company only the finest ingredients that are sourced locally to handcraft every brownie, cookie, and cake. Our mission is to deliver a little piece of happiness and fun, right to your doorstep.
               </p>
             </div>
           </div>
