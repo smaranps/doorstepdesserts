@@ -2,7 +2,6 @@
 const nextConfig = {
   output: 'export',
   basePath: '/doorstepdesserts',
-  trailingSlash: true,
   typescript: {
     ignoreBuildErrors: true,
   },
