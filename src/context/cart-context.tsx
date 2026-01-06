@@ -38,7 +38,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         newItems[existingItemIndex].quantity += 1; // Always increment by 1 when adding an existing item
         return newItems;
       } else {
-        return [...prevItems, itemToAdd];
+        // For new items, ensure the quantity is at least 1
+        return [...prevItems, { ...itemToAdd, quantity: itemToAdd.quantity || 1 }];
       }
     });
   };
