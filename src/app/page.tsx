@@ -111,10 +111,10 @@ export default function Home() {
               <div
                 key={product.id}
                 className={cn(
-                  'opacity-0 transition-all duration-700 ease-out',
+                  'opacity-0',
                   isMenuVisible && 'animate-fade-in-up'
                 )}
-                style={{ animationDelay: `${index * 150}ms` }}
+                style={{ animationDelay: `${index * 200}ms` }}
               >
                 <ProductCard product={product} />
               </div>
@@ -163,3 +163,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
