@@ -2,7 +2,6 @@
   "name": "nextn",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://smaranps.github.io/doorstepdesserts",
   "scripts": {
     "dev": "next dev -p 9002",
     "build": "NODE_ENV=production next build",
