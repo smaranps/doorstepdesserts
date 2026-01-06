@@ -96,7 +96,7 @@ export default function Home() {
                 style={{ border: 0 }}
                 allowFullScreen={false}
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                referrerPolicy="no-referrer"
               ></iframe>
             </div>
             <div>
