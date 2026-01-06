@@ -1,6 +1,5 @@
-import type {NextConfig} from 'next';
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   output: 'export',
   basePath: '/doorstepdesserts',
   /* config options here */
@@ -32,7 +31,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https' ,
+        protocol: 'https',
         hostname: 'plus.unsplash.com',
         port: '',
         pathname: '/**',
@@ -47,4 +46,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
