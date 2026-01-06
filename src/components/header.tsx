@@ -51,15 +51,15 @@ export function Header() {
     <header
       className="sticky top-0 z-50 w-full border-b border-border/40 bg-primary/95 backdrop-blur supports-[backdrop-filter]:bg-primary/60"
     >
-      <div className="container flex h-16 items-center">
-        <div className="mr-4 flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
+      <div className="container flex h-16 items-center justify-between">
+        <div className="flex items-center gap-6">
+          <Link href="/" className="flex items-center space-x-2">
             <Logo />
             <span className="font-bold font-headline text-primary-foreground">
               Doorstep Desserts
             </span>
           </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
+          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
              <Link
               href="/cake-customizer"
               className="text-primary-foreground/70 transition-colors hover:text-primary-foreground"
@@ -69,7 +69,7 @@ export function Header() {
           </nav>
         </div>
 
-        <div className="flex flex-1 items-center justify-end">
+        <div className="flex items-center">
             <CartSheet />
         </div>
       </div>
