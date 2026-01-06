@@ -77,12 +77,12 @@ export function ProductCard({ product }: ProductCardProps) {
         <p className="text-lg font-bold text-primary">
           ${product.price.toFixed(2)}
         </p>
-        <div className="flex items-center gap-2">
+        <div className="w-full flex items-center gap-2">
           {hasVariants ? (
             <>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="outline" size="sm" className="w-32 justify-between">
+                  <Button variant="outline" className="flex-1 justify-between">
                     {selectedVariant ? selectedVariant.name : 'Flavor'}
                     <ChevronDown className="h-4 w-4" />
                   </Button>
@@ -98,13 +98,13 @@ export function ProductCard({ product }: ProductCardProps) {
                   ))}
                 </DropdownMenuContent>
               </DropdownMenu>
-              <Button onClick={handleAddToCart} size="sm">
+              <Button onClick={handleAddToCart} className="flex-1">
                 <ShoppingCart className="mr-2 h-4 w-4" />
-                Add
+                Add to Cart
               </Button>
             </>
           ) : (
-            <Button onClick={handleAddToCart}>
+            <Button onClick={handleAddToCart} className="w-full">
               <ShoppingCart className="mr-2 h-4 w-4" />
               Add to Cart
             </Button>
