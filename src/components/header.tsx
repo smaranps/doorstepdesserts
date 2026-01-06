@@ -59,6 +59,14 @@ export function Header() {
               Doorstep Desserts
             </span>
           </Link>
+          <nav className="flex items-center space-x-6 text-sm font-medium">
+             <Link
+              href="/cake-customizer"
+              className="text-primary-foreground/70 transition-colors hover:text-primary-foreground"
+            >
+              Cake Customizer
+            </Link>
+          </nav>
         </div>
 
         <div className="flex flex-1 items-center justify-end">
