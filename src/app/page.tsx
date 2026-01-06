@@ -97,7 +97,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="rounded-lg overflow-hidden shadow-xl">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3172.332249829324!2d-122.0089705846959!3d37.3346654798426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb59127263c7f%3A0x21696515a201c10b!2sApple%20Park!5e0!3m2!1sen!2sus!4v1678886369535!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2870.737134375176!2d-78.89212002380536!3d43.92131367109214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d51cf8f114757f%3A0x69f6983726591321!2s301%20Simcoe%20St%20N%2C%20Oshawa%2C%20ON%20L1G%204X6%2C%20Canada!5e0!3m2!1sen!2sus!4v1727712398539!5m2!1sen!2sus"
                 width="100%"
                 height="450"
                 style={{ border: 0 }}
