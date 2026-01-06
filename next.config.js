@@ -1,11 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  basePath: '/doorstepdesserts',
-  images: {
-    unoptimized: true,
-  },
-  trailingSlash: true,
   typescript: {
     ignoreBuildErrors: true,
   },
