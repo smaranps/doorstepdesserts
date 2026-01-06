@@ -1,6 +1,8 @@
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
+  output: 'export',
+  basePath: '/doorstepdesserts',
   /* config options here */
   typescript: {
     ignoreBuildErrors: true,
