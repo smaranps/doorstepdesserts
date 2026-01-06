@@ -16,6 +16,7 @@ export default function CakeCustomizerPage() {
   const [eventDescription, setEventDescription] = useState('');
   const [cakeIdea, setCakeIdea] = useState<CakeDesignerOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,12 +24,13 @@ export default function CakeCustomizerPage() {
 
     setIsLoading(true);
     setCakeIdea(null);
+    setError(null);
     try {
       const result = await generateCake({ description: eventDescription });
       setCakeIdea(result);
     } catch (error) {
       console.error("Failed to generate cake idea:", error);
-      // Optionally, show an error message to the user
+      setError("Sorry, we couldn't design a cake right now. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -81,9 +83,14 @@ export default function CakeCustomizerPage() {
                 <Skeleton className="h-16 w-full" />
               </div>
             )}
-            {!isLoading && !cakeIdea && (
+            {!isLoading && !cakeIdea && !error && (
                <div className="text-center text-muted-foreground">
                 Your AI-generated cake description and image will appear here.
+              </div>
+            )}
+            {error && (
+              <div className="text-center text-destructive-foreground bg-destructive/90 p-4 rounded-md">
+                {error}
               </div>
             )}
             {cakeIdea && (

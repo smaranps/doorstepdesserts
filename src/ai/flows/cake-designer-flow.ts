@@ -26,7 +26,7 @@ const CakeDesignerOutputSchema = z.object({
     ),
   imageUrl: z
     .string()
-    .describe('A placeholder image URL from picsum.photos for the generated cake concept.'),
+    .describe('A data URI of the generated cake concept image.'),
   imageHint: z
     .string()
     .describe('A one or two-word hint for searching for a real image.'),
@@ -37,14 +37,18 @@ export async function generateCake(input: CakeDesignerInput): Promise<CakeDesign
   return cakeDesignerFlow(input);
 }
 
-const prompt = ai.definePrompt({
-  name: 'cakeDesignerPrompt',
+const textPrompt = ai.definePrompt({
+  name: 'cakeDesignerTextPrompt',
   input: { schema: CakeDesignerInputSchema },
-  output: { schema: CakeDesignerOutputSchema },
+  output: { schema: z.object({
+    cakeName: CakeDesignerOutputSchema.shape.cakeName,
+    cakeDescription: CakeDesignerOutputSchema.shape.cakeDescription,
+    imageHint: CakeDesignerOutputSchema.shape.imageHint,
+  }) },
   model: googleAI.model('gemini-2.5-flash'),
   prompt: `
     You are an expert cake designer for a shop called "Doorstep Desserts".
-    Your task is to design a unique cake based on a user's event description.
+    Your task is to design a unique cake concept based on a user's event description.
 
     Based on the following description, create a concept for a cake.
     Description: {{{description}}}
@@ -52,8 +56,7 @@ const prompt = ai.definePrompt({
     Your response should include:
     1. A creative and fun name for the cake.
     2. A detailed, two-sentence description of the cake, including potential flavors, colors, and decorations that fit the theme.
-    3. A placeholder image URL using the format: https://picsum.photos/seed/{a random number}/600/400
-    4. A one or two-word hint for searching for a real image (e.g., "space cake", "travel theme").
+    3. A one or two-word hint for searching for a real image (e.g., "space cake", "travel theme").
   `,
 });
 
@@ -64,19 +67,29 @@ const cakeDesignerFlow = ai.defineFlow(
     outputSchema: CakeDesignerOutputSchema,
   },
   async (input) => {
-    const { output } = await prompt(input);
-    if (!output) {
-        throw new Error("The AI failed to generate a cake design.");
+    // Step 1: Generate the cake concept text.
+    const { output: textOutput } = await textPrompt(input);
+    if (!textOutput) {
+        throw new Error("The AI failed to generate a cake design description.");
     }
 
-    // Since Math.random() can cause hydration issues if used directly in the client,
-    // we ensure a random seed is generated on the server as part of the flow.
-    // The prompt asks the LLM to do this, but we can enforce it here as a backup.
-    if (!output.imageUrl.includes('picsum.photos')) {
-        const randomSeed = Math.floor(Math.random() * 1000);
-        output.imageUrl = `https://picsum.photos/seed/${randomSeed}/600/400`;
+    // Step 2: Generate an image based on the description.
+    const imagePrompt = `A high-resolution, professionally shot photo of a designer cake. The cake is the centerpiece. Cake description: ${textOutput.cakeDescription}. Theme: ${textOutput.imageHint}.`;
+    
+    const { media } = await ai.generate({
+        model: googleAI.model('imagen-4.0-fast-generate-001'),
+        prompt: imagePrompt,
+    });
+    
+    const imageUrl = media?.url;
+    if (!imageUrl) {
+        throw new Error("The AI failed to generate a cake image.");
     }
-
-    return output;
+    
+    // Step 3: Combine text and image into the final output.
+    return {
+        ...textOutput,
+        imageUrl,
+    };
   }
 );
