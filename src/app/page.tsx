@@ -85,7 +85,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="about" className="py-16 md:py-24 bg-card">
+      <section id="about" className="py-16 md:py-24 bg-secondary/30">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="rounded-lg overflow-hidden shadow-xl">
@@ -96,7 +96,7 @@ export default function Home() {
                 style={{ border: 0 }}
                 allowFullScreen={false}
                 loading="lazy"
-                referrerPolicy="no-referrer"
+                referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
             <div>
