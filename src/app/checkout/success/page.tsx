@@ -1,4 +1,11 @@
-import { Button } from "@/components/ui/button";
+
+'use client';
+
+import { useEffect } from 'react';
+import Link from 'next/link';
+import { CheckCircle2 } from 'lucide-react';
+import { useCart } from '@/context/cart-context';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -6,11 +13,15 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { CheckCircle2 } from "lucide-react";
-import Link from "next/link";
+} from '@/components/ui/card';
 
 export default function CheckoutSuccessPage() {
+  const { clearCart } = useCart();
+
+  useEffect(() => {
+    clearCart();
+  }, [clearCart]);
+
   return (
     <div className="container mx-auto max-w-lg py-12 px-4">
       <Card className="w-full text-center">
