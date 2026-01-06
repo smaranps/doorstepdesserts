@@ -6,6 +6,7 @@ import { products } from '@/lib/products';
 import { ProductCard } from '@/components/product-card';
 import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { Input } from '@/components/ui/input';
 
 const Logo = () => (
   <svg
@@ -51,6 +52,7 @@ const Logo = () => (
 
 export default function Home() {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -76,6 +78,12 @@ export default function Home() {
       }
     };
   }, []);
+
+  const filteredProducts = products.filter(
+    (product) =>
+      product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="bg-background">
@@ -103,11 +111,22 @@ export default function Home() {
       </section>
       <section id="menu" className="py-16 md:py-24" ref={menuRef}>
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12 text-primary">
-            Our Menu
-          </h2>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary">
+              Our Menu
+            </h2>
+            <div className="mt-4 max-w-md mx-auto">
+               <Input
+                    type="text"
+                    placeholder="Search our delicious desserts..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full"
+                />
+            </div>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product, index) => (
+            {filteredProducts.map((product, index) => (
               <div
                 key={product.id}
                 className={cn(
@@ -119,6 +138,11 @@ export default function Home() {
                 <ProductCard product={product} />
               </div>
             ))}
+             {filteredProducts.length === 0 && (
+                <div className="text-center text-muted-foreground col-span-full">
+                    <p>No desserts found for "{searchTerm}".</p>
+                </div>
+            )}
           </div>
         </div>
       </section>
@@ -163,5 +187,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
