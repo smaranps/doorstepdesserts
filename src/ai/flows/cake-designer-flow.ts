@@ -73,18 +73,9 @@ const cakeDesignerFlow = ai.defineFlow(
         throw new Error("The AI failed to generate a cake design description.");
     }
 
-    // Step 2: Generate an image based on the description.
-    const imagePrompt = `A high-resolution, professionally shot photo of a designer cake. The cake is the centerpiece. Cake description: ${textOutput.cakeDescription}. Theme: ${textOutput.imageHint}.`;
-    
-    const { media } = await ai.generate({
-        model: googleAI.model('imagen-4.0-fast-generate-001'),
-        prompt: imagePrompt,
-    });
-    
-    const imageUrl = media?.url;
-    if (!imageUrl) {
-        throw new Error("The AI failed to generate a cake image.");
-    }
+    // Step 2: Create a placeholder image URL.
+    const seed = textOutput.cakeName.replace(/\s+/g, '-').toLowerCase();
+    const imageUrl = `https://picsum.photos/seed/${seed}/600/400`;
     
     // Step 3: Combine text and image into the final output.
     return {
