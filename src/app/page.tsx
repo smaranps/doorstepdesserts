@@ -85,6 +85,34 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section id="about" className="py-16 md:py-24 bg-card">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="rounded-lg overflow-hidden shadow-xl">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3172.332249829324!2d-122.0089705846959!3d37.3346654798426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb59127263c7f%3A0x21696515a201c10b!2sApple%20Park!5e0!3m2!1sen!2sus!4v1678886369535!5m2!1sen!2sus"
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+            <div>
+              <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary mb-4">
+                About Us
+              </h2>
+              <p className="text-muted-foreground mb-4">
+                Founded in a small kitchen with a big dream, Doorstep Desserts is a passion project dedicated to the art of baking. We believe that a great dessert can make any day special.
+              </p>
+              <p className="text-muted-foreground">
+                We use only the finest ingredients, sourced locally whenever possible, to handcraft every brownie, cookie, and cake. Our mission is simple: to deliver a little piece of happiness, right to your doorstep.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="py-16 md:py-24 bg-secondary/30">
         <div className="container mx-auto px-4 text-center">
            <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary mb-4">
