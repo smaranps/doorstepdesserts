@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -5,7 +6,7 @@ import { CartSheet } from "./cart-sheet";
 
 const Logo = () => (
   <svg
-    className="h-8 w-8 text-primary"
+    className="h-8 w-8 text-primary-foreground"
     width="24"
     height="24"
     viewBox="0 0 24 24"
@@ -18,7 +19,7 @@ const Logo = () => (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      fill="hsla(var(--primary-foreground), 0.2)"
+      fill="hsla(var(--primary), 0.2)"
     />
     <path
       d="M2 7L12 12L22 7"
@@ -36,7 +37,7 @@ const Logo = () => (
     />
     <path
       d="M17.5 4.5L16 9L12 12L8 9L6.5 4.5"
-      stroke="hsl(var(--primary))"
+      stroke="hsl(var(--primary-foreground))"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -48,13 +49,13 @@ const Logo = () => (
 export function Header() {
   return (
     <header
-      className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+      className="sticky top-0 z-50 w-full border-b border-border/40 bg-primary/95 backdrop-blur supports-[backdrop-filter]:bg-primary/60"
     >
       <div className="container flex h-16 items-center">
         <div className="mr-4 flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <Logo />
-            <span className="font-bold font-headline text-primary">
+            <span className="font-bold font-headline text-primary-foreground">
               Doorstep Desserts
             </span>
           </Link>
