@@ -1,8 +1,8 @@
 
 'use client';
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
-import type { CartItem, DessertVariant } from '@/lib/types';
+import React, { createContext, useContext, useState, ReactNode, useCallback } from 'react';
+import type { CartItem } from '@/lib/types';
 
 interface CartContextType {
   items: CartItem[];
@@ -27,7 +27,7 @@ export const useCart = () => {
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [items, setItems] = useState<CartItem[]>([]);
 
-  const addItem = (itemToAdd: CartItem) => {
+  const addItem = useCallback((itemToAdd: CartItem) => {
     setItems((prevItems) => {
       const existingItemIndex = prevItems.findIndex(
         (item) => item.id === itemToAdd.id && item.variant?.id === itemToAdd.variant?.id
@@ -35,37 +35,40 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
       if (existingItemIndex > -1) {
         const newItems = [...prevItems];
-        newItems[existingItemIndex].quantity += 1; // Always increment by 1 when adding an existing item
+        newItems[existingItemIndex].quantity += 1;
         return newItems;
       } else {
-        // For new items, ensure the quantity is at least 1
-        return [...prevItems, { ...itemToAdd, quantity: itemToAdd.quantity || 1 }];
+        return [...prevItems, { ...itemToAdd, quantity: 1 }];
       }
     });
-  };
+  }, []);
 
-  const removeItem = (itemId: string, variantId: string | null) => {
+  const removeItem = useCallback((itemId: string, variantId: string | null) => {
     setItems((prevItems) =>
       prevItems.filter(
         (item) => !(item.id === itemId && item.variant?.id === variantId)
       )
     );
-  };
+  }, []);
 
-  const updateQuantity = (itemId: string, variantId: string | null, quantity: number) => {
-    setItems((prevItems) =>
-      prevItems.map((item) => {
-        if (item.id === itemId && item.variant?.id === variantId) {
-          return { ...item, quantity: Math.max(0, quantity) };
+  const updateQuantity = useCallback((itemId: string, variantId: string | null, quantity: number) => {
+    setItems((prevItems) => {
+        if (quantity <= 0) {
+            return prevItems.filter(item => !(item.id === itemId && item.variant?.id === variantId));
         }
-        return item;
-      }).filter(item => item.quantity > 0)
-    );
-  };
+        
+        return prevItems.map((item) => {
+            if (item.id === itemId && item.variant?.id === variantId) {
+            return { ...item, quantity };
+            }
+            return item;
+        });
+    });
+  }, []);
 
-  const clearCart = () => {
+  const clearCart = useCallback(() => {
     setItems([]);
-  };
+  }, []);
 
   const cartCount = items.reduce((count, item) => count + item.quantity, 0);
 
