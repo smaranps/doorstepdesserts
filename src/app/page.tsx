@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { useCart } from '@/context/cart-context';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ShoppingCart } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 const Logo = () => (
   <svg
@@ -59,6 +60,7 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const menuRef = useRef<HTMLDivElement>(null);
   const { addItem } = useCart();
+  const { toast } = useToast();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -179,14 +181,20 @@ export default function Home() {
                     <p className="text-2xl font-bold text-primary">${featuredProduct.price.toFixed(2)}</p>
                     <Button 
                       size="lg"
-                      onClick={() => addItem({
-                        id: featuredProduct.id,
-                        name: featuredProduct.name,
-                        price: featuredProduct.price,
-                        quantity: 1,
-                        variant: null,
-                        imageUrl: featuredImage?.imageUrl
-                      })}
+                      onClick={() => {
+                        addItem({
+                            id: featuredProduct.id,
+                            name: featuredProduct.name,
+                            price: featuredProduct.price,
+                            quantity: 1,
+                            variant: null,
+                            imageUrl: featuredImage?.imageUrl
+                        });
+                        toast({
+                            title: "Added to cart",
+                            description: `${featuredProduct.name} is now in your cart.`,
+                        });
+                      }}
                     >
                       <ShoppingCart className="mr-2 h-5 w-5" />
                       Add to Cart

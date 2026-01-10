@@ -23,6 +23,7 @@ import {
 import { ChevronDown, ShoppingCart } from 'lucide-react';
 import { useCart } from '@/context/cart-context';
 import { Badge } from './ui/badge';
+import { useToast } from '@/hooks/use-toast';
 
 interface ProductCardProps {
   product: Dessert;
@@ -33,6 +34,7 @@ export function ProductCard({ product }: ProductCardProps) {
     product.variants?.[0] || null
   );
   const { addItem } = useCart();
+  const { toast } = useToast();
 
   const image = PlaceHolderImages.find((img) => img.id === product.imageId);
 
@@ -45,6 +47,10 @@ export function ProductCard({ product }: ProductCardProps) {
         quantity: 1,
         imageUrl: image?.imageUrl,
     });
+    toast({
+        title: "Added to cart",
+        description: `${product.name} has been added to your cart.`,
+    })
   }
 
   const hasVariants = product.variants && product.variants.length > 0;

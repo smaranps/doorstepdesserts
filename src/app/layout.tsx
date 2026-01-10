@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { CartProvider } from "@/context/cart-context";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Doorstep Desserts",
@@ -29,6 +30,7 @@ export default function RootLayout({
           <div className="flex flex-col min-h-dvh">
             <Header />
             <main className="flex-1">{children}</main>
+            <Toaster />
           </div>
         </CartProvider>
       </body>
