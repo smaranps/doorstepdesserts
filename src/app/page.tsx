@@ -81,6 +81,7 @@ export default function Home() {
 
     return () => {
       if (menuRef.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         observer.unobserve(menuRef.current);
       }
     };
@@ -247,3 +248,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
