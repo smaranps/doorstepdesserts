@@ -61,11 +61,17 @@ export function ProductCard({ product }: ProductCardProps) {
       className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
     >
       <CardHeader className="p-0">
-        {image && (
+        {product.isComingSoon ? (
+           <div className="aspect-[3/2] w-full relative bg-muted flex items-center justify-center">
+              <Badge variant="secondary">
+                Coming Soon
+              </Badge>
+          </div>
+        ) : image && (
           <div className="aspect-[3/2] w-full relative">
-             {(product.featured || product.isComingSoon) && (
-              <Badge className="absolute top-2 right-2 z-10" variant={product.isComingSoon ? 'secondary' : 'default'}>
-                {product.isComingSoon ? 'Coming Soon' : 'Featured'}
+             {product.featured && (
+              <Badge className="absolute top-2 right-2 z-10">
+                Featured
               </Badge>
             )}
             <Image
@@ -81,9 +87,9 @@ export function ProductCard({ product }: ProductCardProps) {
       </CardHeader>
       <CardContent className="p-4 flex-grow">
         <CardTitle className="text-xl font-headline mb-1">
-          {product.name}
+          {product.isComingSoon ? 'Coming Soon' : product.name}
         </CardTitle>
-        <CardDescription>{product.description}</CardDescription>
+        <CardDescription>{product.isComingSoon ? 'A new delicious treat is on its way.' : product.description}</CardDescription>
       </CardContent>
       <CardFooter className="p-4 flex flex-wrap justify-between items-center bg-muted/50 gap-4 min-h-[96px]">
         {!product.isComingSoon ? (

@@ -60,16 +60,16 @@ export const products: Dessert[] = [
     },
     {
         id: 'tiramisu-slice',
-        name: 'Classic Tiramisu',
-        description: 'Layers of coffee-soaked ladyfingers and creamy mascarpone. A timeless Italian classic.',
+        name: '',
+        description: '',
         price: 0,
         imageId: 'tiramisu-slice',
         isComingSoon: true
     },
     {
         id: 'seasonal-fruit-tart',
-        name: 'Seasonal Fruit Tart',
-        description: 'A buttery crust filled with vanilla pastry cream and topped with fresh, seasonal fruit.',
+        name: '',
+        description: '',
         price: 0,
         imageId: 'seasonal-fruit-tart',
         isComingSoon: true
