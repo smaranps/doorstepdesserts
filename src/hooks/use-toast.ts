@@ -43,7 +43,7 @@ type Action =
       toast: Partial<ToasterToast>
     }
   | {
-      type: ActionType["DISMASS_TOAST"]
+      type: ActionType["DISMISS_TOAST"]
       toastId?: ToasterToast["id"]
     }
   | {
