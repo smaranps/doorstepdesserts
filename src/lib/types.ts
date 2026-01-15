@@ -11,6 +11,7 @@ export type Dessert = {
   imageId: string;
   variants?: DessertVariant[];
   featured?: boolean;
+  isComingSoon?: boolean;
 };
 
 export type CartItem = {

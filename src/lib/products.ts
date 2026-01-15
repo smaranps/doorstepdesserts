@@ -57,5 +57,21 @@ export const products: Dessert[] = [
         description: "Feeling adventurous? Get a curated box of our freshest, most delicious surprise treats of the day. A delightful mix of our best bakes!",
         price: 25.00,
         imageId: 'mystery-dessert-box'
+    },
+    {
+        id: 'tiramisu-slice',
+        name: 'Classic Tiramisu',
+        description: 'Layers of coffee-soaked ladyfingers and creamy mascarpone. A timeless Italian classic.',
+        price: 0,
+        imageId: 'tiramisu-slice',
+        isComingSoon: true
+    },
+    {
+        id: 'seasonal-fruit-tart',
+        name: 'Seasonal Fruit Tart',
+        description: 'A buttery crust filled with vanilla pastry cream and topped with fresh, seasonal fruit.',
+        price: 0,
+        imageId: 'seasonal-fruit-tart',
+        isComingSoon: true
     }
 ];

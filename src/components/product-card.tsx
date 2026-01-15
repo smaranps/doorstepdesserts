@@ -63,8 +63,10 @@ export function ProductCard({ product }: ProductCardProps) {
       <CardHeader className="p-0">
         {image && (
           <div className="aspect-[3/2] w-full relative">
-             {product.featured && (
-              <Badge className="absolute top-2 right-2 z-10">Featured</Badge>
+             {(product.featured || product.isComingSoon) && (
+              <Badge className="absolute top-2 right-2 z-10" variant={product.isComingSoon ? 'secondary' : 'default'}>
+                {product.isComingSoon ? 'Coming Soon' : 'Featured'}
+              </Badge>
             )}
             <Image
               src={image.imageUrl}
@@ -83,45 +85,53 @@ export function ProductCard({ product }: ProductCardProps) {
         </CardTitle>
         <CardDescription>{product.description}</CardDescription>
       </CardContent>
-      <CardFooter className="p-4 flex flex-wrap justify-between items-center bg-muted/50 gap-4">
-         <div className="flex justify-between items-center w-full">
-            <p className="text-lg font-bold text-primary">
-            ${product.price.toFixed(2)}
-            </p>
-        </div>
-        <div className="w-full flex items-center gap-2">
-          {hasVariants ? (
-            <>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline" className="flex-1 justify-between">
-                    {selectedVariant ? selectedVariant.name : 'Flavor'}
-                    <ChevronDown className="h-4 w-4" />
+      <CardFooter className="p-4 flex flex-wrap justify-between items-center bg-muted/50 gap-4 min-h-[96px]">
+        {!product.isComingSoon ? (
+          <>
+            <div className="flex justify-between items-center w-full">
+              <p className="text-lg font-bold text-primary">
+                ${product.price.toFixed(2)}
+              </p>
+            </div>
+            <div className="w-full flex items-center gap-2">
+              {hasVariants ? (
+                <>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="outline" className="flex-1 justify-between">
+                        {selectedVariant ? selectedVariant.name : 'Flavor'}
+                        <ChevronDown className="h-4 w-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      {product.variants!.map((variant) => (
+                        <DropdownMenuItem
+                          key={variant.id}
+                          onSelect={() => setSelectedVariant(variant)}
+                        >
+                          {variant.name}
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                  <Button onClick={handleAddToCart} className="flex-1">
+                    <ShoppingCart className="mr-2 h-4 w-4" />
+                    Add to Cart
                   </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  {product.variants!.map((variant) => (
-                    <DropdownMenuItem
-                      key={variant.id}
-                      onSelect={() => setSelectedVariant(variant)}
-                    >
-                      {variant.name}
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-              <Button onClick={handleAddToCart} className="flex-1">
-                <ShoppingCart className="mr-2 h-4 w-4" />
-                Add to Cart
-              </Button>
-            </>
-          ) : (
-            <Button onClick={handleAddToCart} className="w-full">
-              <ShoppingCart className="mr-2 h-4 w-4" />
-              Add to Cart
-            </Button>
-          )}
-        </div>
+                </>
+              ) : (
+                <Button onClick={handleAddToCart} className="w-full">
+                  <ShoppingCart className="mr-2 h-4 w-4" />
+                  Add to Cart
+                </Button>
+              )}
+            </div>
+          </>
+        ) : (
+          <div className="w-full text-center">
+            <p className="text-sm font-medium text-muted-foreground">More deliciousness on the way!</p>
+          </div>
+        )}
       </CardFooter>
     </Card>
   );

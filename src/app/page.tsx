@@ -207,18 +207,8 @@ export default function Home() {
         </section>
       )}
 
-       <section id="about" className="relative py-16 md:py-24 text-white">
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZGVzc2VydHxlbnwwfHwwfHx8MA%3D%3D"
-            alt="Baking ingredients"
-            fill
-            className="object-cover"
-            data-ai-hint="baking ingredients"
-          />
-          <div className="absolute inset-0 bg-black/60" />
-        </div>
-        <div className="container mx-auto px-4 relative z-10">
+       <section id="about" className="py-16 md:py-24 bg-gray-50">
+        <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="rounded-lg overflow-hidden shadow-xl">
               <iframe
@@ -235,10 +225,10 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-headline font-bold mb-4">
                 About Us
               </h2>
-              <p className="text-gray-300 mb-4">
+              <p className="text-gray-600 mb-4">
                 Founded by Nikola Kostic and Smaran Pinisetty in January 2026, both of them carried out this operation with the goal of having valiant customer service and amazing food quality while making sure everything is locally sourced and homemade. 
               </p>
-              <p className="text-gray-300">
+              <p className="text-gray-600">
                 Our company uses only the finest ingredients that are sourced locally to handcraft every brownie, cookie, and cake. Our goal is to deliver a little piece of happiness and fun, right to your doorstep. If it means to celebrate a party with others or just hungry, Doorstep Desserts is always ready to serve you.
               </p>
             </div>
@@ -248,5 +238,7 @@ export default function Home() {
     </div>
   );
 }
+
+    
 
     
