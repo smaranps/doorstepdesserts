@@ -1,3 +1,4 @@
+
 export type DessertVariant = {
   id: string;
   name: string;
@@ -11,7 +12,6 @@ export type Dessert = {
   imageId: string;
   variants?: DessertVariant[];
   featured?: boolean;
-  isComingSoon?: boolean;
 };
 
 export type CartItem = {

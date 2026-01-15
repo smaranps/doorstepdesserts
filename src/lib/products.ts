@@ -50,28 +50,5 @@ export const products: Dessert[] = [
         description: 'A slice of tangy lemon filling topped with fluffy toasted meringue giving an amazing taste.',
         price: 4.00,
         imageId: 'lemon-meringue-pie'
-    },
-    {
-        id: 'mystery-box',
-        name: "'Surprise Me!' Mystery Box",
-        description: "Feeling adventurous? Get a curated box of our freshest, most delicious surprise treats of the day. A delightful mix of our best bakes!",
-        price: 25.00,
-        imageId: 'mystery-dessert-box'
-    },
-    {
-        id: 'tiramisu-slice',
-        name: '',
-        description: '',
-        price: 0,
-        imageId: 'tiramisu-slice',
-        isComingSoon: true
-    },
-    {
-        id: 'seasonal-fruit-tart',
-        name: '',
-        description: '',
-        price: 0,
-        imageId: 'seasonal-fruit-tart',
-        isComingSoon: true
     }
 ];
