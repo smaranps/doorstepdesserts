@@ -1,3 +1,4 @@
+
 import type { Dessert } from '@/lib/types';
 
 export const products: Dessert[] = [
@@ -49,5 +50,12 @@ export const products: Dessert[] = [
         description: 'A slice of tangy lemon filling topped with fluffy toasted meringue giving an amazing taste.',
         price: 4.00,
         imageId: 'lemon-meringue-pie'
+    },
+    {
+        id: 'mystery-box',
+        name: "'Surprise Me!' Mystery Box",
+        description: "Feeling adventurous? Get a curated box of our freshest, most delicious surprise treats of the day. A delightful mix of our best bakes!",
+        price: 25.00,
+        imageId: 'mystery-dessert-box'
     }
 ];
